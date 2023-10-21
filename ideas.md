@@ -21,6 +21,10 @@
  - puzzle that resets itself if you blink, so you have to finish the whole thing without blinking
  - blinking automatically triggers choices
  - information only appears on screen when blinking, need to fake/squint to see it.
+ - gorgon (can't look at it or it attacks)
+    - need to use your phone or squint or something.
+    - or we can use "left" and "right" side of screen as big targets, and make you carry out a sequence of moves with your eyes closed?
+    - fits with a labyrinth theme, forking left/right.
  - weeping angel
     - best as a finale
     - close the browser tab if player dies?
