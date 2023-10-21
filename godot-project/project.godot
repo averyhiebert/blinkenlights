@@ -400,6 +400,7 @@ config/icon="res://icon.png"
 
 EyeTracker="*res://global/EyeTracker.gd"
 __InkRuntime="*res://addons/inkgd/runtime/static/ink_runtime.gd"
+GlobalStory="*res://global/GlobalStory.gd"
 
 [editor_plugins]
 
