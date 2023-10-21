@@ -1,0 +1,50 @@
+extends Node
+
+signal blink_down
+signal blink_up
+signal left_eye_down
+signal left_eye_up
+signal right_eye_down
+signal right_eye_up
+
+
+var bd_cb = JavaScript.create_callback(self, "_blink_down")
+var bu_cb = JavaScript.create_callback(self, "_blink_up")
+var ld_cb = JavaScript.create_callback(self, "_left_eye_down")
+var lu_cb = JavaScript.create_callback(self, "_left_eye_up")
+var rd_cb = JavaScript.create_callback(self, "_right_eye_down")
+var ru_cb = JavaScript.create_callback(self, "_right_eye_up")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	# Set up all API calls for the JS frontend to communicate with Godot
+	var console = JavaScript.get_interface("console")
+	console.log("eye tracker loaded?");
+	var window = JavaScript.get_interface("window")
+	print(window)
+	#window.blinkDown = bd_cb
+	window.blinkDown = bd_cb
+	window.blinkUp = bu_cb
+	window.leftEyeDown = ld_cb
+	window.leftEyeUp = lu_cb
+	window.rightEyeDown = rd_cb
+	window.rightEyeUp = ru_cb
+
+
+func _blink_down(args):
+	emit_signal("blink_down")
+	
+func _blink_up(args):
+	emit_signal("blink_up")
+
+func _left_eye_down(args):
+	emit_signal("left_eye_down")
+	
+func _left_eye_up(args):
+	emit_signal("left_eye_up")
+	
+func _right_eye_down(args):
+	emit_signal("right_eye_down")
+
+func _right_eye_up(args):
+	emit_signal("right_eye_up")
