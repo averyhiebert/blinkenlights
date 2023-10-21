@@ -29,3 +29,5 @@
  - synchronized blinking
  - jumpscare player with their own face (get image from JS)
  - staring contest with your own eye-shapes (get shapes from JS)
+    - then the eyes start to rotate/tilt slightly, but of course if you tilt your head to the same time to match it'll cause them to tilt even further in response to your own movement.
+    - idk, maybe I'm too sleep deprived to come up with non-silly ideas.
