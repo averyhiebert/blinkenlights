@@ -55,7 +55,8 @@ function onDoneBlink() {
     windowElementPage.style.background = "white"
 }
 
-const BLINK_THRESHHOLD = 0.6
+//const BLINK_THRESHHOLD = 0.6
+const BLINK_THRESHHOLD = 0.4
 const AI_TICK_RATE = 50; // MS
 
 let lastVideoTime = -1;
