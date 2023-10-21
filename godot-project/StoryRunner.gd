@@ -6,12 +6,17 @@ var _ink_player = null
 onready var text_target:RichTextLabel = $CanvasLayer/VBoxContainer/RichTextLabel
 
 var blink_index = -1 # Which index is the "blink" option?
+var unblink_index = -1 # Which index is the "unblink" option?
+
+var timer_index = -1
+var choice_timer = null;
 
 func _ready():
 	text_target.clear()
 	text_target.connect("meta_clicked", self, "_select_choice")
 	
-	EyeTracker.connect("blink_down",self,"_on_blink")
+	EyeTracker.connect("blink_down",self,"_on_blink_down")
+	EyeTracker.connect("blink_up",self,"_on_blink_up")
 	
 	if GlobalStory.player_ready:
 		_story_loaded()
@@ -54,15 +59,35 @@ func _prompt_choices(choices):
 		for choice in choices:
 			if choice == "BLINK":
 				blink_index = index
+			elif choice == "UNBLINK":
+				unblink_index = index
+			elif choice.begins_with("TIMER"):
+				timer_index = index
+				var time = int(choice.split(" ")[1])
+				choice_timer = Timer.new()
+				choice_timer.one_shot = true
+				choice_timer.wait_time = time
+				choice_timer.connect("timeout",self,"_on_timer")
+				add_child(choice_timer)
+				choice_timer.start()
 			else:
 				# (note: I adopt the convention that (( )) means a text-mode-only option
 				text_target.append_bbcode("\n[center][url=%d]%s[/url][/center]\n" % [index, choice])
 				#text_target.append_bbcode("[url=%d]%s[/url]\n\n" % [index, choice])
 			index += 1
 
-func _on_blink():
+func _on_blink_down():
 	if blink_index >= 0:
 		_select_choice(blink_index)
+
+func _on_blink_up():
+	if unblink_index >= 0:
+		_select_choice(unblink_index)
+
+func _on_timer():
+	print("timer happened")
+	if timer_index >= 0:
+		_select_choice(timer_index)
 
 func _ended():
 	print("The End")
@@ -71,7 +96,15 @@ func _ended():
 func _select_choice(index):
 	# Note: clear after each choice, to fit with blink theme
 	text_target.clear()
+	# Reset any blinks:
 	blink_index = -1
+	unblink_index = -1
+	
+	# Remove timer if necessary
+	timer_index = -1
+	if choice_timer:
+		choice_timer.queue_free()
+		choice_timer = null
 	
 	_ink_player.choose_choice_index(int(index))
 	_ink_player.continue_story()

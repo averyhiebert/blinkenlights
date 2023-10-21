@@ -22,7 +22,7 @@ Do you consent to participate in this experiment?
 ~temp blink_count = 0
 - (sync1)
 We must begin the syncing procedure.
-Please blink twice.
+Please blink twice in a row.
  * {blink_count == 2} ->
     # CLEAR
     ~blink_count = 0
@@ -30,18 +30,31 @@ Please blink twice.
     ~blink_count += 1
     // TODO Add a timer or something, so we only accept 3 blinks in rapid concession.
     -> sync1
+ + {blink_count < 2}[{timer(1)}]
+    // Reset blink count
+    ~blink_count = 0
+    -> sync1
 - (sync2)
-Please blink 3 times.
+Please blink 3 times in a row.
  * {blink_count == 3} ->
     # CLEAR
  + {blink_count < 3}[{BLINK}]
     ~blink_count += 1
     -> sync2
--
+ + {blink_count < 3}[{timer(1.5)}]
+    // Reset blink count
+    ~blink_count = 0
+    -> sync2
+- (intro_close_eyes)
 Please close your eyes for 5 seconds.
 // TODO Timer
 + [{BLINK}]
--
+    Please close your eyes for 5 seconds.
+    ++ [{UNBLINK}]
+        -> intro_close_eyes
+    ++ [{timer(4.5)}]
+        -> sync_done
+- (sync_done)
 TODO Major background change/some sort of swirly vortex shader thing.
 SYNC COMPLETE
 + [Enter the labyrinth...]
@@ -124,11 +137,6 @@ You see a sprawling banyan tree casting shade over a wide area.
 LIST door_type = (golden),oaken,iron
 VAR west_door_locked = true
 = garden_west
-{door_type:
-- golden:
-- oaken:
-- iron:
-}
 You see a small house-like building with an elaborate conical roof.
 The {door_type} door is {west_door_locked:locked|unlocked}.
 + [{BLINK}]
