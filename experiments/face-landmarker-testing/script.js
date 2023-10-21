@@ -4,6 +4,7 @@ import { FaceLandmarker, FilesetResolver, DrawingUtils } from "https://cdn.jsdel
 let isDebugMode = true;
 let isActiveAI = false;
 
+const windowElementPage = document.getElementById("page")
 const windowElementDebug = document.getElementById("debug")
 const windowElementVideo = document.getElementById("webcam");
 const windowElementCanvas = document.getElementById("output_canvas");
@@ -41,6 +42,18 @@ function pageSupportsWebcam() {
     return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
 }
 
+function onBlink() {
+    console.log("Started Blinking!")
+    windowElementPage.style.transition = "background 0.2s"
+    windowElementPage.style.background = "black"
+
+}
+
+function onDoneBlink() {
+    console.log("Stopped Blinking!")
+    windowElementPage.style.transition = "background 0.2s"
+    windowElementPage.style.background = "white"
+}
 
 const BLINK_THRESHHOLD = 0.6
 const AI_TICK_RATE = 50; // MS
@@ -103,9 +116,9 @@ async function predictWebcam() {
             }
 
             if (!wasBlinking && isBlinking) {
-                console.log("Begun to Blink!")
+                onBlink()
             } else if (wasBlinking && !isBlinking) {
-                console.log("Stopped Blinking!")
+                onDoneBlink()
             }
 
             wasBlinking = isBlinking
