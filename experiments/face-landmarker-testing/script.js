@@ -1,8 +1,5 @@
-// TOOD: 404's a resource, why?
+// TODO: 404's a resource, why?
 import { FaceLandmarker, FilesetResolver, DrawingUtils } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
-
-let isDebugMode = true;
-let isActiveAI = false;
 
 const windowElementPage = document.getElementById("page")
 const windowElementDebug = document.getElementById("debug")
@@ -12,8 +9,32 @@ const videoBlendShapes = document.getElementById("video-blend-shapes");
 
 const canvasCtx = windowElementCanvas.getContext("2d");
 const drawingUtils = new DrawingUtils(canvasCtx);
+let aiFaceLandmarker = undefined;
+let stream = undefined;
+
+// Window State
+let isDebugMode = false;
+
+const BLINK_THRESHHOLD = 0.4
+const AI_TICK_RATE = 50; // MS
+
+let lastVideoTime = -1;
+let lastTimestamp = performance.now()
+let timeElapsedAI = 0.0;
+let timeElapsedOverall = 0.0;
+let eyeBlinkLeftData = 0.0;
+let eyeBlinkRightData = 0.0;
+
+let wasBlinking = false;
+let isBlinking = false;
+
+// Trigger onAIDisconnect in the very beginning
+let wasActiveAI = true;
+let isActiveAI = false;
+
 
 function initializeVideoCanvas() {
+    // TODO: Refine 
     const videoWidth = 480;
     const ratio = windowElementVideo.videoHeight / windowElementVideo.videoWidth;
     windowElementVideo.style.width = videoWidth + "px";
@@ -24,19 +45,7 @@ function initializeVideoCanvas() {
     windowElementCanvas.height = windowElementVideo.videoHeight;
 }
 
-let aiFaceLandmarker = undefined;
-windowElementDebug.addEventListener("click", toggleDebugMode)
-
-function toggleDebugMode() {
-    isDebugMode = !isDebugMode;
-    console.log("Toggled DEBUG: ", isDebugMode)
-
-    if (isDebugMode) {
-        windowElementDebug.classList.remove("invisible") 
-    } else {
-        windowElementDebug.classList.add("invisible")
-    }
-}
+windowElementDebug.addEventListener("click", () => (isDebugMode = !isDebugMode))
 
 function pageSupportsWebcam() {
     return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
@@ -46,7 +55,21 @@ function onBlink() {
     console.log("Started Blinking!")
     windowElementPage.style.transition = "background 0.2s"
     windowElementPage.style.background = "black"
+}
 
+function onAIConnect() {
+    isBlinking = false;
+    console.log("AI Connected!")
+    windowElementPage.style.transition = "background 0.2s"
+    windowElementPage.style.background = "white"
+}
+ 
+function onAIDisconnect() {
+    wasBlinking = false
+    isBlinking = false
+    windowElementPage.style.transition = "background 0.2s"
+    windowElementPage.style.background = "red"
+    console.log("AI Disconnected!")
 }
 
 function onDoneBlink() {
@@ -55,27 +78,15 @@ function onDoneBlink() {
     windowElementPage.style.background = "white"
 }
 
-//const BLINK_THRESHHOLD = 0.6
-const BLINK_THRESHHOLD = 0.4
-const AI_TICK_RATE = 50; // MS
-
-let lastVideoTime = -1;
-let lastTimestamp = performance.now()
-let timeElapsedAI = 0.0;
-let timeElapsedOverall = 0.0;
-let eyeBlinkLeftData = undefined;
-let eyeBlinkRightData = undefined;
-
-let wasBlinking = false;
-let isBlinking = false;
-
 async function predictWebcam() {
-    let results = undefined;
+    wasActiveAI = isActiveAI
 
     // just in case for any errors
     try {
         // FIXME: Why here? putting this anywhere else stops the face blendshapes from forming 
         initializeVideoCanvas()
+
+        let results = undefined;
         
         let startTimeMs = performance.now();
         if (lastVideoTime !== windowElementVideo.currentTime) {
@@ -102,28 +113,18 @@ async function predictWebcam() {
         if (results?.faceBlendshapes?.length) {
             isActiveAI = true;
             let faceData = results.faceBlendshapes[0];
-            eyeBlinkLeftData = faceData.categories[9]
-            eyeBlinkRightData = faceData.categories[10]
-
-            let leftEyeBlinkPerc = eyeBlinkLeftData.score
-            let rightEyeBlinkPerc = eyeBlinkRightData.score
-
-            if (leftEyeBlinkPerc > BLINK_THRESHHOLD && rightEyeBlinkPerc > BLINK_THRESHHOLD) {
-                isBlinking = true
-            } 
-
-            if (leftEyeBlinkPerc < BLINK_THRESHHOLD || rightEyeBlinkPerc < BLINK_THRESHHOLD) {
-                isBlinking = false;
-            }
-
-            if (!wasBlinking && isBlinking) {
-                onBlink()
-            } else if (wasBlinking && !isBlinking) {
-                onDoneBlink()
-            }
+            eyeBlinkLeftData = faceData.categories[9].score
+            eyeBlinkRightData = faceData.categories[10].score
 
             wasBlinking = isBlinking
 
+            if (eyeBlinkLeftData > BLINK_THRESHHOLD && eyeBlinkRightData > BLINK_THRESHHOLD) {
+                isBlinking = true
+            } 
+
+            if (eyeBlinkLeftData < BLINK_THRESHHOLD || eyeBlinkRightData < BLINK_THRESHHOLD) {
+                isBlinking = false;
+            }
         } else {
             isActiveAI = false;
         }
@@ -147,8 +148,8 @@ function drawDebugMenu(el, { eyeBlinkLeftData, eyeBlinkRightData, timeElapsedAI,
     htmlString += htmlMacro("Overall Time:",`${(timeElapsedOverall).toFixed(0)}ms`)
     htmlString += htmlMacro("AI Time:",`${(timeElapsedAI).toFixed(0)}ms`)
     htmlString += htmlMacro("Is AI Active?",isActiveAI)
-    htmlString += htmlMacro(eyeBlinkLeftData.displayName || eyeBlinkLeftData.categoryName, (+eyeBlinkLeftData.score).toFixed(4), eyeBlinkLeftData.score * 100)
-    htmlString += htmlMacro(eyeBlinkRightData.displayName || eyeBlinkRightData.categoryName, (+eyeBlinkRightData.score).toFixed(4), eyeBlinkRightData.score * 100)
+    htmlString += htmlMacro("eyeBlinkLeft", (+eyeBlinkLeftData).toFixed(4), eyeBlinkLeftData * 100)
+    htmlString += htmlMacro("eyeBlinkRight", (+eyeBlinkRightData).toFixed(4), eyeBlinkRightData * 100)
     htmlString += htmlMacro("Blink Thold:",`${(blinkThreshhold).toFixed(4)}`)
 
     el.innerHTML = htmlString;
@@ -190,6 +191,45 @@ async function loadWebcamStream() {
     }
 }
 
+function tickState() {
+
+    console.log("Tick!");
+    console.log("AI!", wasActiveAI, isActiveAI);
+    if (!wasActiveAI && isActiveAI) {
+        onAIConnect()
+    } else if (wasActiveAI && !isActiveAI) {
+        onAIDisconnect()
+    }
+
+    console.log("Blink!", wasBlinking, isBlinking);
+    if (!wasBlinking && isBlinking) {
+        onBlink()
+    } else if (wasBlinking && !isBlinking) {
+        onDoneBlink()
+    }
+
+    console.log("Debug!", isDebugMode);
+    if (!isDebugMode) {
+        windowElementDebug.classList.add("invisible")
+    }
+
+    if (isDebugMode) {
+        windowElementDebug.classList.remove("invisible") 
+        drawDebugMenu(videoBlendShapes, { eyeBlinkLeftData, eyeBlinkRightData, timeElapsedAI, timeElapsedOverall, blinkThreshhold: BLINK_THRESHHOLD, isActiveAI });
+    }
+
+}
+
+function tickAI() {
+    if (stream && stream.active) {
+        predictWebcam()
+    } else {
+        // TODO: Multiple states for AI not being active? Eg. Webcam, AI error, etc
+        wasActiveAI = isActiveAI
+        isActiveAI = false
+    }
+}
+
 async function main() {
     if (!pageSupportsWebcam()) {
         // TODO: Better handling of no webcam
@@ -197,35 +237,23 @@ async function main() {
         return
     }
 
-    let stream;
-    [aiFaceLandmarker, stream] = await Promise.all([loadFaceLandmarker(), loadWebcamStream()])
+    console.log(tickState);
+    tickState();
 
-    isActiveAI = true;
-    console.log(stream)
-
-
-    function tickAI() {
-        if (stream.active) {
-            predictWebcam()
-        } else {
-            isActiveAI = false
-        }
-
-        if (isDebugMode) {
-            drawDebugMenu(videoBlendShapes, { eyeBlinkLeftData, eyeBlinkRightData, timeElapsedAI, timeElapsedOverall, blinkThreshhold: BLINK_THRESHHOLD, isActiveAI });
-        }
-    }
+    [aiFaceLandmarker, stream] = await Promise.all([loadFaceLandmarker(), loadWebcamStream()]);
 
     windowElementVideo.srcObject = stream
     windowElementVideo.addEventListener("loadeddata", () => { 
-        tickAI()
-        setInterval(tickAI, AI_TICK_RATE) 
+        tickAI();
+        tickState();
+        setInterval(() => {
+            tickAI();
+            tickState();
+        }
+            , AI_TICK_RATE) 
     })
 
-
     console.log("Finished Initialization")
-
 }
-
 
 main()
