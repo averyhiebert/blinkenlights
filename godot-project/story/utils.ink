@@ -3,6 +3,7 @@ CONST BLINK = "BLINK"
 CONST UNBLINK = "UNBLINK"
 
 === blink_continue ===
-+ [{BLINK}]
--
-->->
++ [{BLINK}] ->->
+
+=== continue ===
++ [Continue...] ->->

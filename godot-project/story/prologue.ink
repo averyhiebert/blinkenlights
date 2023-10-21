@@ -15,12 +15,14 @@ Will you participate willingly?
         Please blink to indicate when you have changed your mind.
         -> blink_continue ->
         Thank you for your cooperation.
+        -> continue ->
 -
 ~temp blink_count = 0
 - (sync1)
 We must begin the syncing procedure.
 Please blink twice.
  * {blink_count == 2} ->
+    # CLEAR
     ~blink_count = 0
  + {blink_count < 2}[{BLINK}]
     ~blink_count += 1
@@ -29,6 +31,7 @@ Please blink twice.
 - (sync2)
 Please blink 3 times.
  * {blink_count == 3} ->
+    # CLEAR
  + {blink_count < 3}[{BLINK}]
     ~blink_count += 1
     -> sync2
