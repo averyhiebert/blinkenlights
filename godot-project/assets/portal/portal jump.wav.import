@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/level3.wav-0894ac169a892cc836efc65d01c19944.sample"
+path="res://.import/portal jump.wav-237d00e15aa998c8c7b2562692238bbe.sample"
 
 [deps]
 
-source_file="res://assets/level3/level3.wav"
-dest_files=[ "res://.import/level3.wav-0894ac169a892cc836efc65d01c19944.sample" ]
+source_file="res://assets/portal/portal jump.wav"
+dest_files=[ "res://.import/portal jump.wav-237d00e15aa998c8c7b2562692238bbe.sample" ]
 
 [params]
 
@@ -17,7 +17,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=2
+edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=0

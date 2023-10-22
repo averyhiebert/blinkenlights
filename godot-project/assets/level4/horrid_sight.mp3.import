@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/horrid_sight.mp3-41d00938b78d3938be311a3e8c8f39d2.mp3str"
+
+[deps]
+
+source_file="res://assets/level4/horrid_sight.mp3"
+dest_files=[ "res://.import/horrid_sight.mp3-41d00938b78d3938be311a3e8c8f39d2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

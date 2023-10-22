@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://backgrounds/example_background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://StoryRunner.gd" type="Script" id=2]
@@ -6,6 +6,15 @@
 [ext_resource path="res://music.gd" type="Script" id=4]
 [ext_resource path="res://assets/level2/level2.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/level4/level4.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/level3/level3.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/level4/horrid_sight.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/level1/level1.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/portal/portal idle.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/portal/portal jump.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/level3/bell.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/level2/explosion.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/level3/ghost_leave.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/intro/intro.wav" type="AudioStream" id=15]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
@@ -13,16 +22,43 @@ script = ExtResource( 2 )
 [node name="music" type="Node2D" parent="."]
 script = ExtResource( 4 )
 
+[node name="level2" type="AudioStreamPlayer" parent="music"]
+stream = ExtResource( 5 )
+
 [node name="level4" type="AudioStreamPlayer" parent="music"]
 stream = ExtResource( 6 )
 
-[node name="level2" type="AudioStreamPlayer" parent="music"]
-stream = ExtResource( 5 )
+[node name="level1" type="AudioStreamPlayer" parent="music"]
+stream = ExtResource( 9 )
+
+[node name="level3" type="AudioStreamPlayer" parent="music"]
+stream = ExtResource( 7 )
+
+[node name="portal_idle" type="AudioStreamPlayer" parent="music"]
+stream = ExtResource( 10 )
+
+[node name="main_menu" type="AudioStreamPlayer" parent="music"]
+stream = ExtResource( 15 )
 
 [node name="SFX" type="Node2D" parent="."]
 
 [node name="monster" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 3 )
+
+[node name="horrid_sight" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 8 )
+
+[node name="portal_jump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 11 )
+
+[node name="bell" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 12 )
+
+[node name="ghost_leave" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 14 )
+
+[node name="explosion" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 13 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

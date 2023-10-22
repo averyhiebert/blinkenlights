@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/level3.wav-0894ac169a892cc836efc65d01c19944.sample"
+path="res://.import/portal idle.wav-d98d64a4a967aa5d516d85c7f1297448.sample"
 
 [deps]
 
-source_file="res://assets/level3/level3.wav"
-dest_files=[ "res://.import/level3.wav-0894ac169a892cc836efc65d01c19944.sample" ]
+source_file="res://assets/portal/portal idle.wav"
+dest_files=[ "res://.import/portal idle.wav-d98d64a4a967aa5d516d85c7f1297448.sample" ]
 
 [params]
 

@@ -110,6 +110,7 @@ You also see an inscription scratched into one of the cave walls.
 You find yourself at a dead end.
 {inventory !? iron_key:There is a large iron key lying on the floor.}
 You also see an inscription scratched into one of the cave walls.
+TODO Make it require at least a second before secret passage shows up.
 + [Secret Passage]
     -> secret_room
 + [{UNBLINK}]
