@@ -3,7 +3,7 @@
 extends Node2D
 
 var _ink_player = null
-onready var text_target:RichTextLabel = $CanvasLayer/VBoxContainer/RichTextLabel
+onready var text_target:RichTextLabel = $CanvasLayer/Panel/VBoxContainer/RichTextLabel
 
 var blink_index = -1 # Which index is the "blink" option?
 var unblink_index = -1 # Which index is the "unblink" option?
