@@ -14,7 +14,7 @@ INCLUDE level4.ink
 
 
 
-VAR DEBUG = true
+VAR DEBUG = false
 
 {DEBUG:
     -> debug_scene
