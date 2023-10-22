@@ -17,9 +17,25 @@ INCLUDE level4.ink
 VAR DEBUG = true
 
 {DEBUG:
-    ~ player_status += scalded_hand
-    -> fourth_chamber
+    -> debug_scene
 }
 
 
 -> start
+
+=== debug_scene ===
+# AUDIOLOOP: level2
+This is a debug screen
++ [{timer(5)}]
+-
+Music should change now
+# AUDIOLOOP: level4
++ [{timer(5)}]
+-
+#AUDIOLOOP: silence
+Now fading to silence
++ [{timer(5)}]
+-
+Now back to music
+# AUDIOLOOP: level2
+-> END

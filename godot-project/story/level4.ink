@@ -157,7 +157,7 @@ They left behind a notebook.
 
 === gorgon_options(cave_id, -> which_cave)
 {not has_gorgon(cave_id):->DONE}
-You hear the gorgon approaching!!!!! # AUDIO monster
+You hear the gorgon approaching!!!!! # AUDIO: monster
 + [{timer(GORGON_WARNING_TIME)}]
 -
 TODO Scary visual effect
