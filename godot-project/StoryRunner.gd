@@ -43,6 +43,11 @@ func _continued(text, tags):
 	if "CLEAR" in tags:
 		# Clear before next line.
 		text_target.clear()
+	for tag in tags:
+		if tag.begins_with("AUDIO "):
+			var sound_name = tag.split(" ")[1]
+			play_sound(sound_name)
+			
 	
 	text_target.append_bbcode(text)
 	
@@ -112,3 +117,8 @@ func _select_choice(index):
 	
 	_ink_player.choose_choice_index(int(index))
 	_ink_player.continue_story()
+
+func play_sound(sound_name):
+	var audio_player = get_node("sounds/%s" % sound_name)
+	if audio_player:
+		audio_player.play()

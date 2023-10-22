@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://backgrounds/example_background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://StoryRunner.gd" type="Script" id=2]
+[ext_resource path="res://assets/level4/monster.wav" type="AudioStream" id=3]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="monster" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 3 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
