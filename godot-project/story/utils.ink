@@ -1,6 +1,7 @@
 // For standardized "blink" choice strings
 CONST BLINK = "BLINK"
 CONST UNBLINK = "UNBLINK"
+CONST EYES_OPEN = "EYES_OPEN" // automatically picked if eyes open
 
 === blink_continue ===
 + [{BLINK}] ->->

@@ -29,7 +29,7 @@ The only exit is a massive gate with a heavy iron portcullis.  The portcullis is
 + {portcullis_raised}[Exit via portcullis]
     -> debrief
 
-LIST water_temp = cold, (normal), hot
+LIST water_temp = (cold), normal, hot
 = garden_south
 You stand before a giant marble basin.
 {water_temp:
@@ -130,7 +130,7 @@ Tell us, what happened in the first chamber?
 + [I was in a garden]
     Of course. Obviously.
 - (garden_updates)
-What {|else} to you remember about the garden?
+What {|else} do you remember about the garden?
 <- garden_questions
 <- debrief_questions(-> garden_updates, -> second_chamber)
 -> DONE

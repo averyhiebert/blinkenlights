@@ -15,7 +15,8 @@ var rd_cb = JavaScript.create_callback(self, "_right_eye_down")
 var ru_cb = JavaScript.create_callback(self, "_right_eye_up")
 
 # Variables for fake non-JS blinking
-var spacebar_blink = false
+var spacebar_blink = true # Actually, let's have this always be enabled
+
 var eyes_open = true
 
 # Called when the node enters the scene tree for the first time.
@@ -45,9 +46,11 @@ func _process(delta):
 
 
 func _blink_down(args):
+	eyes_open = false
 	emit_signal("blink_down")
 	
 func _blink_up(args):
+	eyes_open = true
 	emit_signal("blink_up")
 
 func _left_eye_down(args):

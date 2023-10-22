@@ -14,11 +14,11 @@ INCLUDE level4.ink
 
 
 
-VAR DEBUG = false
+VAR DEBUG = true
 
 {DEBUG:
     ~ player_status += scalded_hand
-    -> third_chamber
+    -> fourth_chamber
 }
 
 
