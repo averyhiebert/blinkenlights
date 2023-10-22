@@ -1,5 +1,5 @@
 *.swp
 godot-project/.inkgd_compiler.cfg
-godot-project/.import/
+godot-project/.import/*
 godot-project/story/*.import
 dist
