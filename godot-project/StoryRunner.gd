@@ -61,9 +61,10 @@ func _prompt_choices(choices):
 				blink_index = index
 			elif choice == "UNBLINK":
 				unblink_index = index
-			elif choice == "EYES_OPEN" and EyeTracker.eyes_open:
-				# Choice is automatically chosen if eyes are already open
-				_select_choice(index)
+			elif choice == "EYES_OPEN":
+				if EyeTracker.eyes_open:
+					# Choice is automatically chosen if eyes are already open
+					_select_choice(index)
 			elif choice.begins_with("TIMER"):
 				timer_index = index
 				var time = int(choice.split(" ")[1])

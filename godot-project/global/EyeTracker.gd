@@ -16,6 +16,7 @@ var ru_cb = JavaScript.create_callback(self, "_right_eye_up")
 
 # Variables for fake non-JS blinking
 var spacebar_blink = true # Actually, let's have this always be enabled
+var fake_eyes_open = true
 
 var eyes_open = true
 
@@ -37,12 +38,12 @@ func _ready():
 		spacebar_blink = true
 
 func _process(delta):
-	if Input.is_action_pressed("blink") and eyes_open:
-		eyes_open = false
-		emit_signal("blink_down")
-	elif not Input.is_action_pressed("blink") and not eyes_open:
-		eyes_open = true
-		emit_signal("blink_up")
+	if Input.is_action_pressed("blink") and fake_eyes_open:
+		fake_eyes_open = false
+		_blink_down(null)
+	elif not Input.is_action_pressed("blink") and not fake_eyes_open:
+		fake_eyes_open = true
+		_blink_up(null)
 
 
 func _blink_down(args):
