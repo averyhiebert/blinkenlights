@@ -29,6 +29,8 @@ The only person in sight is the Captain, who is struggling with some sort of con
             You need to stop believing everything some asshole in a lab coat tells you.
         ---
     --
-+ ->
+-
 
 = wrong_answer
+pass
+-> END
