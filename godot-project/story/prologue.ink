@@ -2,14 +2,14 @@
 === start ===
 # CLEAR
 Thank you for your interest in our study.
-We will be observing your behaviour within The Labyrinth, a perfectly safe, digitally-simulated environment.
+We will be observing your behaviour within a series of perfectly safe, digitally-simulated environments which we call The Labyrinth.
 This experiment will gather valuable information about human behaviour.
 Do you consent to participate in this experiment?
  * [I will participate.]
     Excellent.
  * [I will not participate.]
     There has been a misunderstanding. You [i]will[/i] participate.
-    We are merely asking for your informed consent, as required for ethics board approval.
+    We are merely asking for your consent, as required for ethics board approval.
     ** [I consent.]
         Excellent.
     ** [I do not consent.]

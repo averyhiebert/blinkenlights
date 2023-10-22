@@ -26,7 +26,7 @@ VAR lights_on = ()
     -> sinking
 - water_level == resolved:
     -> survived
-}
+} <> // Glue needed for bug
 You are on the bridge of a sinking cargo ship.  Alarms are blaring.
 The only person in sight is the Captain, who is {|still} struggling with some sort of control console.
 <- blink_randomize_lights(->the_bridge)
