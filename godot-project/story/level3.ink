@@ -14,7 +14,11 @@ A {~rickety|rotting|ancient} wooden dock juts out into the water.
 + {not ferryman_summoned}[Ring the bell]
     ~ferryman_summoned = true
     A spectral, hooded figure appears before your eyes.
-    -> continue -> swamp
+    <- vanish
+    ++ [Speak to the apparition]
+        -> speak
+    ++ [Ignore the apparition]
+        -> swamp
 + {ferryman_summoned}[Speak to the hooded figure]
   -> speak
 
@@ -68,13 +72,15 @@ But I will not take you across the estuary."
         <- vanish
         +++ [Are you sure?]
         ---
-        "Not entirely.  But you will blink eventually, regardless."
+        "Not entirely.  But you will blink eventually, regardless of what I do."
         <- vanish
-        +++ [I might not. It depends when the simulation ends.]
         +++ [You have a point.]
-        ---
-        "I know not what this means.  But I am curious."
+            I always do.
+        +++ [I might not. It depends when the simulation ends.]
+            "I know not what this means. But I suppose... it may be worth finding out."
+            -> success
 + [Walk away]
+    -> swamp
 - -> continue -> swamp
 
 = success
@@ -85,7 +91,7 @@ The ferryman finally relents, and begins leading you to a small boat.
     ~ferryman_summoned = false
     -> continue -> swamp
 + [Enter the ferry]
-    The boat pulls out into the waters of the estuary.
+    The boat pulls out into the waters of the estuary...
     ++ [{BLINK}]
         The boat pulls out into the waters of the estuary.
         But before you reach the other side, you blink and the ferryman vanishes, leaving you stranded.
@@ -97,7 +103,7 @@ The ferryman finally relents, and begins leading you to a small boat.
             -> alone
         +++ [{timer(10)}]
             -> level3_failure
-    ++ [And then...]
+    ++ [{timer(3)}]
     -- -> level3_success
 
 = level3_success
