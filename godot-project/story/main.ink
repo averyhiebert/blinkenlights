@@ -14,7 +14,7 @@ VAR DEBUG = true
 
 {DEBUG:
     ~ player_status += scalded_hand
-    -> first_chamber
+    -> second_chamber
 }
 
 
