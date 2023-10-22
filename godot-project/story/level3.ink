@@ -108,11 +108,13 @@ The ferryman finally relents, and begins leading you to a small boat.
 
 = level3_success
 THIRD CHAMBER COMPLETE
+(todo will write more here)
 TODO interstitial narrative
 -> fourth_chamber
 
 = level3_failure
 THIRD CHAMBER COMPLETE
+(todo will write more here)
 TODO interstitial narrative
 -> fourth_chamber
 

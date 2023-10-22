@@ -14,5 +14,5 @@
     ** [Ok.]
 + [I think that's everything.]
     Very well.  Let's continue.
-    -> next_level
+    -> continue -> next_level
 - -> go_back

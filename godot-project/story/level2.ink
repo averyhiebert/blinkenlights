@@ -177,6 +177,8 @@ The captain enters {listWithCommas(selection,"")} on the command console...
 
 === level2_debrief
 SECOND CHAMBER COMPLETE
+(todo will write more here)
 TODO Write debrief conversation.
+-> continue -> third_chamber
 
 
