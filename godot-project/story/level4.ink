@@ -162,8 +162,8 @@ You see a scrap of a notebook left behind.
     -> continue ->
     - (illegible)
     "The codephrase is {~ILLEGIBLE|SMUDGED|RIPPED|MISSING}."
-    + [{BLINK}] -> illegible
-    + [This is the end of the message.]
+    ++ [{BLINK}] -> illegible
+    ++ [This is the end of the message.]
         -> secret_room
 + [Go back]
     -> cave_key
