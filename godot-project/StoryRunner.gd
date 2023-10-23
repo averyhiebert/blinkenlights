@@ -46,6 +46,9 @@ func _continued(text, tags):
 		if tag.begins_with("AUDIO:"):
 			var sound_name = tag.split(" ")[1]
 			play_sound(sound_name)
+		if tag.begins_with("BG:"):
+			var scene_name = tag.split(" ")[1]
+			$BGLayer.set_scene(scene_name)
 		elif tag.begins_with("AUDIOLOOP:"):
 			var track_name = tag.split(" ")[1]
 			$music.fade_to(track_name)

@@ -26,4 +26,5 @@ color = Color( 0.27451, 0.054902, 0.168627, 1 )
 position = Vector2( 183, -45 )
 amount = 200
 lifetime = 0.8
+preprocess = 2.0
 process_material = SubResource( 1 )

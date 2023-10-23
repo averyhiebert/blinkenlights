@@ -20,6 +20,7 @@ CONST EYES_OPEN = "EYES_OPEN" // automatically picked if eyes open
 === enter_portal ===
 # AUDIOLOOP: portal_idle
 # AUDIO: portal_jump
+#BG: vortex
 ->->
 
 

@@ -2,8 +2,10 @@
 === start ===
 # CLEAR
 # AUDIOLOOP: silence
+# BG: rain
 Thank you for your interest in our study.
 We will be observing your behaviour within a series of perfectly safe, digitally-simulated environments which we call The Labyrinth.
+-> continue ->
 This experiment will gather valuable information about human behaviour.
 Do you consent to participate in this experiment?
  * [I will participate.]
@@ -57,6 +59,7 @@ Please close your eyes for 5 seconds.
         -> sync_done
 - (sync_done)
 TODO Major background change/some sort of swirly vortex shader thing.
+-> enter_portal ->
 SYNC COMPLETE
 + [{UNBLINK}]
 -
