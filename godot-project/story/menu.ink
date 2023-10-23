@@ -6,6 +6,7 @@
 [center][color=\#d53c6a]~~~~~~~~~~[/color][/center]
 [center][img]icon.png[/img][/center]
 [center][color=\#d53c6a]~~~~~~~~~~[/color][/center]
+[center][color=\#d53c6a]NOTE: A WEBCAM IS REQUIRED![/color][/center]
 + [Start Game] -> start
 + [EPILEPSY WARNING (MAYBE?)]
     This game may briefly contain a high-contrast shift in full-screen background colour at a rate of 1 HZ for about 3 seconds.

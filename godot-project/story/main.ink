@@ -21,7 +21,7 @@ VAR DEBUG = false
 
 {DEBUG:
     ~found_secret = true
-    -> third_chamber
+    //-> third_chamber
     -> fourth_chamber
     -> cave_entrance.cave1
     -> level4_debrief

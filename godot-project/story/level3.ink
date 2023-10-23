@@ -2,7 +2,7 @@
 === third_chamber ===
 # AUDIO: portal_jump
 # AUDIOLOOP: level3
-# BG: plain
+# BG: rain
 VAR ferryman_summoned = false
 -> swamp
 

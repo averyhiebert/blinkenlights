@@ -114,6 +114,27 @@ You find yourself at a dead end.
 {inventory !? iron_key:There is a large iron key lying on the floor.}
 You also see an inscription scratched into one of the cave walls.
 TODO Make it require at least a second before secret passage shows up.
++ [{UNBLINK}]
+    -> cave_key
++ [{timer(1)}]
+    -> cave_key_closed_long
++ [Read the inscription]
+    "EYES = LIES!
+    Close your eyes to open your mind!"
+    The inscription appears to have been left recently.
+    -> continue -> cave_key
++ {inventory !? iron_key}[Grab the key]
+    You pick up the iron key.
+    ~inventory += iron_key
+    -> continue -> cave_key
++ [Go back]
+    -> cave_right
+
+= cave_key_closed_long
+You find yourself at a dead end.
+{inventory !? iron_key:There is a large iron key lying on the floor.}
+You also see an inscription scratched into one of the cave walls.
+TODO Make it require at least a second before secret passage shows up.
 + [Secret Passage]
     -> secret_room
 + [{UNBLINK}]
