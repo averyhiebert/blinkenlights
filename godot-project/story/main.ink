@@ -9,23 +9,26 @@ INCLUDE level3.ink
 INCLUDE level4.ink
 INCLUDE level5.ink
 INCLUDE debrief_questions.ink
+INCLUDE menu.ink
 
 
 
 
 
 
-VAR DEBUG = true
+
+VAR DEBUG = false
 
 {DEBUG:
     ~found_secret = true
+    -> third_chamber
     -> fourth_chamber
     -> cave_entrance.cave1
     -> level4_debrief
 }
 
 
--> start
+-> main_menu
 
 === debug_scene ===
 # AUDIOLOOP: level2

@@ -16,7 +16,6 @@ func _ready():
 
 func set_scene(name):
 	if name in scene_dict:
-		var current_child = get_child(0)
+		for child in get_children():
+			child.free()
 		add_child(scene_dict[name].instance())
-		if current_child:
-			current_child.queue_free()

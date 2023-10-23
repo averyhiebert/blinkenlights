@@ -3,7 +3,7 @@
 # BG: dark
 -> top
 = top
-You at one end of a hallway in what appears to be an abandoned art gallery.
+You are at one end of a hallway in what appears to be an abandoned art gallery.<br>
 -> statue_progress ->
 + [{BLINK}]
     -> top

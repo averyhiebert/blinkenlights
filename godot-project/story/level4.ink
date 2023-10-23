@@ -12,7 +12,6 @@ VAR found_secret = false
 -> cave_entrance
 
 === cave_entrance ===
-
 You arrive at the entrance to a vast cavern.
 Your local guide stops just outside.
 "You will find what you seek in there."
@@ -179,10 +178,9 @@ You hear the gorgon approaching!!!!! # AUDIO: monster
 + [{timer(GORGON_WARNING_TIME)}]
 -
 TODO Scary visual effect
-THE GORGON IS A TERRIBLE SITE TO BEHOLD
+THE GORGON IS A TERRIBLE SIGHT TO BEHOLD
 YOU IMMEDIATELY REGRET OPENING YOUR EYES
 + [{timer(GORGON_DANGER_TIME)}]
-    //~gorgon_passed = true
     ~random_switch(gorgon_location)
     The gorgon has gone, although its stench still lingers.
     -> continue -> which_cave
@@ -191,7 +189,7 @@ YOU IMMEDIATELY REGRET OPENING YOUR EYES
 -
 # INTERRUPT_MONSTER
 # AUDIO: horrid_sight
-THE GORGON IS A TERRIBLE SITE TO BEHOLD
+THE GORGON IS A TERRIBLE SIGHT TO BEHOLD
 YOU IMMEDIATELY REGRET OPENING YOUR EYES
 -> blink_continue -> death("FOURTH")
 

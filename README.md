@@ -7,9 +7,6 @@ When you blink in the game, you blink in real life?
 https://lospec.com/palette-list/midnight-ablaze
 
 # ROADMAP:
- - change garden music to chimes
-    - use intro.wav for main menu
-    - make slightly quieter?
  - main menu: 
     - with credits/attributions
  - itch.io page

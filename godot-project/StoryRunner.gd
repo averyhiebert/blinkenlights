@@ -10,8 +10,6 @@ var unblink_index = -1 # Which index is the "unblink" option?
 var timer_index = -1
 var choice_timer = null;
 
-var reset_lockout = false
-
 func _ready():
 	text_target.clear()
 	text_target.connect("meta_clicked", self, "_select_choice")
@@ -40,10 +38,6 @@ func _story_loaded():
 	_ink_player.continue_story()
 
 func _continued(text, tags):
-	if reset_lockout:
-		# workaround unclear bug
-		return
-	
 	if "CLEAR" in tags:
 		# Clear before next line.
 		text_target.clear()
@@ -51,7 +45,7 @@ func _continued(text, tags):
 		if tag.begins_with("AUDIO:"):
 			var sound_name = tag.split(" ")[1]
 			play_sound(sound_name)
-		if tag.begins_with("BG:"):
+		elif tag.begins_with("BG:"):
 			var scene_name = tag.split(" ")[1]
 			$BGLayer.set_scene(scene_name)
 		elif tag.begins_with("AUDIOLOOP:"):
@@ -60,22 +54,10 @@ func _continued(text, tags):
 		elif tag == "INTERRUPT_MONSTER":
 			$SFX/monster.stop()
 		elif tag == "RESTART":
-			#reset_lockout = true
-			#_ink_player.destroy()
 			_ink_player.reset()
-			#var timer = Timer.new()
-			#timer.one_shot = true
-			#timer.wait_time = 1
-			#timer.connect("timeout",self,"restart_story")
-			#add_child(choice_timer)
-			#timer.start()
-	
+	text = text.replace("<br>","\n")
 	text_target.append_bbcode(text)
 	
-	_ink_player.continue_story()
-
-func restart_story():
-	reset_lockout = false
 	_ink_player.continue_story()
 
 # ############################################################################ #
@@ -83,10 +65,6 @@ func restart_story():
 # ############################################################################ #
 
 func _prompt_choices(choices):
-	if reset_lockout:
-		# workaround unclear bug
-		return
-	
 	if !choices.empty():
 		var index = 0
 		for choice in choices:
@@ -122,7 +100,6 @@ func _on_blink_up():
 		_select_choice(unblink_index)
 
 func _on_timer():
-	print("timer happened")
 	if timer_index >= 0:
 		_select_choice(timer_index)
 

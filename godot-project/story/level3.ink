@@ -91,7 +91,9 @@ But I will not take you across the estuary."
 The ferryman finally relents, and begins leading you to a small boat.
 + [{BLINK}]
     The ferryman finally relents, and begins leading you to a small boat.
-    But here, on the brink of success, you blink and he vanishes again.
+    <br>
+    But just as you step into the boat, you blink and he vanishes again, leaving you stranded.
+    -> stranded
     ~ferryman_summoned = false
     -> continue -> swamp
 + [Enter the ferry]
@@ -99,17 +101,19 @@ The ferryman finally relents, and begins leading you to a small boat.
     ++ [{BLINK}]
         The boat pulls out into the waters of the estuary.
         But before you reach the other side, you blink and the ferryman vanishes, leaving you stranded.
-        ~ferryman_summoned = false
-        +++ [Wait]
-        --- (alone)
-        You are alone, floating in a vast expanse of {&water|oil|tears|wine|ichor|blood|vitreous humor}...
-        +++ [{BLINK}]
-            -> alone
-        +++ [{timer(2.5)}]
-            -> level3_failure
+        -> stranded
     ++ [{timer(3)}]
     -- 
     -> level3_success
+
+= stranded
++ [Wait]
+- (alone)
+You are alone, floating in a vast expanse of {&water|oil|tears|wine|ichor|blood|vitreous humor}...
++ [{BLINK}]
+    -> alone
++ [{timer(2.5)}]
+    -> level3_failure
 
 = level3_success
 ~level_success += L3
