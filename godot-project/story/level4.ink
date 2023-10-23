@@ -157,11 +157,11 @@ You see a scrap of a notebook left behind.
     "The previous subjects have all suffered a terrible fate."
     "But you can escape.  They can let you out of the testing apparatus, if you convince them."
     -> continue ->
-    "I have discovered that there is a self-destruct code for the apparatus."
+    "I have discovered that there is a self-destruct codephrase for the apparatus."
     "Threaten to say it out loud, and they will have to release you."
     -> continue ->
     - (illegible)
-    "The code is {ILLEGIBLE|SMUDGED|RIPPED|MISSING}."
+    "The codephrase is {~ILLEGIBLE|SMUDGED|RIPPED|MISSING}."
     + [{BLINK}] -> illegible
     + [This is the end of the message.]
         -> secret_room
@@ -192,18 +192,8 @@ YOU IMMEDIATELY REGRET THIS
 # AUDIO: horrid_sight
 THE GORGON IS A TERRIBLE SITE TO BEHOLD
 YOU IMMEDIATELY REGRET THIS
--> blink_continue -> gorgon_bad_ending
+-> blink_continue -> death("FOURTH")
 
-=== gorgon_bad_ending
--> enter_portal ->
-ADVERSE EVENT DETECTED
-FOURTH CHAMBER ABORTED
-+ [{timer(1)}]
--
-ERROR
-UNSTABLE EVENT
-RE-ENTERING CHAMBER
-TODO story here.
 
 === level4_debrief
 -> enter_portal ->
@@ -290,12 +280,12 @@ Please close your eyes for 5 seconds to continue.
 = escape_ending
 # AUDIO: portal_jump
 # AUDIOLOOP: silence
-TODO write escape ending
+You find yourself ejected back into reality.
 Congrats! You escaped with your life.
 
 Chambers cleared without adverse events: {LIST_COUNT(level_success)}/4.
-{inventory? pocket_watch:You also got a platinum pocket watch, I guess.}
 {player_status? scalded_hand:Your hand is still burned.}
+{inventory? pocket_watch:You also got a platinum pocket watch, I guess.}
 
 Let us know what you thought in the comments, and consider donating using the "support this game" button below!
 -> END
