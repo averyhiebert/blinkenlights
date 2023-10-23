@@ -50,6 +50,8 @@ func _continued(text, tags):
 		elif tag.begins_with("AUDIOLOOP:"):
 			var track_name = tag.split(" ")[1]
 			$music.fade_to(track_name)
+		elif tag == "INTERRUPT_MONSTER":
+			$SFX/monster.stop()
 	
 	text_target.append_bbcode(text)
 	

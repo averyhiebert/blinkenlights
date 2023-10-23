@@ -1,5 +1,5 @@
 CONST GORGON_WARNING_TIME = 3 // How much warning before eyes MUST be closed?
-CONST GORGON_DANGER_TIME = 5  // How long does the gorgon stay in view?
+CONST GORGON_DANGER_TIME = 9  // How long does the gorgon stay in view?
 
 LIST gorgon_location = (_cave2), _cave_left, _cave_right, _cave_forest
 VAR gorgon_passed = false
@@ -172,6 +172,8 @@ YOU IMMEDIATELY REGRET THIS
 + [{EYES_OPEN}]
 + [{UNBLINK}]
 -
+# INTERRUPT_MONSTER
+# AUDIO: horrid_sight
 THE GORGON IS A TERRIBLE SITE TO BEHOLD
 YOU IMMEDIATELY REGRET THIS
 -> blink_continue -> gorgon_bad_ending
