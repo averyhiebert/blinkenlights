@@ -15,7 +15,7 @@ INCLUDE debrief_questions.ink
 
 
 
-VAR DEBUG = true
+VAR DEBUG = false
 
 {DEBUG:
     ~found_secret = true
