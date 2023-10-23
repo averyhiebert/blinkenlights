@@ -14,10 +14,10 @@ INCLUDE level4.ink
 
 
 
-VAR DEBUG = true
+VAR DEBUG = false
 
 {DEBUG:
-    -> cave_entrance.cave1
+    -> third_chamber.swamp
 }
 
 

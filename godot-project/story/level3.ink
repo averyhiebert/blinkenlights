@@ -1,5 +1,7 @@
 
 === third_chamber ===
+# AUDIO: portal_jump
+# AUDIOLOOP: level3
 VAR ferryman_summoned = false
 -> swamp
 
@@ -12,6 +14,7 @@ A {~rickety|rotting|ancient} wooden dock juts out into the water.
     A spectral hooded figure hovers above the dock.
 }
 + {not ferryman_summoned}[Ring the bell]
+    # AUDIO: bell
     ~ferryman_summoned = true
     A spectral, hooded figure appears before your eyes.
     <- vanish
@@ -107,22 +110,25 @@ The ferryman finally relents, and begins leading you to a small boat.
     -- -> level3_success
 
 = level3_success
+-> enter_portal ->
 THIRD CHAMBER COMPLETE
 (todo will write more here)
 TODO interstitial narrative
--> fourth_chamber
+-> continue -> fourth_chamber
 
 = level3_failure
+-> enter_portal ->
 THIRD CHAMBER COMPLETE
 (todo will write more here)
 TODO interstitial narrative
--> fourth_chamber
+-> continue -> fourth_chamber
 
 
 = vanish
 + [{BLINK}]
     As you blink, the hooded figure suddenly fades out of existence.
     ~ferryman_summoned = false
+    # AUDIO: ghost_leave
     -> continue -> swamp
 
 = clarifying_questions

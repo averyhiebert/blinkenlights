@@ -17,6 +17,11 @@ CONST EYES_OPEN = "EYES_OPEN" // automatically picked if eyes open
 // Randomly CHANGE (i.e. may not stay same) the state of a list
 ~list = LIST_RANDOM(LIST_ALL(list) - list)
 
+=== enter_portal ===
+# AUDIOLOOP: portal_idle
+# AUDIO: portal_jump
+->->
+
 
 // Select one item from a list of items.
 // Use as a tunnel

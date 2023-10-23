@@ -1,5 +1,7 @@
 
 === first_chamber ===
+# AUDIO: portal_jump
+# AUDIOLOOP: level1
 -> garden
 
 VAR path_NS = true
@@ -73,7 +75,7 @@ You see a sprawling banyan tree casting shade over a wide area.
     -> garden
 // Maybe a bonus "secret"/warning for the player? A la portal?
 
-LIST door_type = (golden),oaken,iron
+LIST door_type = golden,(oaken),iron
 VAR west_door_locked = true
 = garden_west
 You see a small house-like building with an elaborate conical roof.
@@ -125,6 +127,7 @@ There is a prominent lever on the wall, in the {portcullis_raised:up|down} posit
 
 
 = debrief
+-> enter_portal ->
 FIRST CHAMBER COMPLETE
 Tell us, what happened in the first chamber?
 + [I was in a garden]

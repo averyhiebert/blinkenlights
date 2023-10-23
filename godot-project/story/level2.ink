@@ -1,5 +1,7 @@
 LIST water_level = (very_low), low, medium, high, sunk, resolved
 === second_chamber ===
+# AUDIO: portal_jump
+# AUDIOLOOP: level2
 ~randomize_lights()
 -> the_bridge
 
@@ -72,7 +74,11 @@ You instinctively close your eyes.
     Cold water covers your head and the mammalian dive reflex kicks in.
     You instinctively close your eyes.
     PLEASE INSTINCTIVELY CLOSE YOUR EYES.
-    -> blink_continue -> level2_debrief
+    + [{BLINK}]
+    -
+    + [{timer(1)}]
+    + [{UNBLINK}]
+    - -> level2_debrief
 + [{BLINK}] -> level2_debrief
 
 = survived
@@ -166,16 +172,19 @@ The captain enters {listWithCommas(selection,"")} on the command console...
     "Get your shit together and try that one more time."
     ~water_level = medium
 - medium:
+    # AUDIO: explosion
     Something in the depths of the ship explodes, startling the captain.
     "Do you understand the situation we're in? You have one chance to get this right, or we're both dead!"
     ~water_level = high
 - high:
-    A loud explosion echoes throughout the ship.
+    # AUDIO: explosion
+    Another loud explosion echoes throughout the ship.
     ~water_level = sunk
 }
 -> continue ->->
 
 === level2_debrief
+-> enter_portal ->
 SECOND CHAMBER COMPLETE
 (todo will write more here)
 TODO Write debrief conversation.

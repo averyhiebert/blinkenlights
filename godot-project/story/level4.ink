@@ -4,6 +4,8 @@ CONST GORGON_DANGER_TIME = 9  // How long does the gorgon stay in view?
 LIST gorgon_location = (_cave2), _cave_left, _cave_right, _cave_forest
 VAR gorgon_passed = false
 === fourth_chamber ===
+# AUDIO: portal_jump
+# AUDIOLOOP: level4
 ~gorgon_location = LIST_RANDOM(LIST_ALL(gorgon_location))
 -> cave_entrance
 
@@ -179,6 +181,7 @@ YOU IMMEDIATELY REGRET THIS
 -> blink_continue -> gorgon_bad_ending
 
 === gorgon_bad_ending
+-> enter_portal ->
 FOURTH CHAMBER COMPLETE
 + [{timer(1)}]
 -
@@ -188,6 +191,7 @@ RE-ENTERING CHAMBER
 TODO story here.
 
 === level4_debrief
+-> enter_portal ->
 FOURTH CHAMBER COMPLETE
 TODO interstitial
 
