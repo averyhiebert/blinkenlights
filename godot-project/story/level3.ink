@@ -155,7 +155,7 @@ What {|else} do you remember about the swamp?
 + [{BLINK}]
     As you blink, the hooded figure suddenly fades out of existence.
     ~ferryman_summoned = false
-    # AUDIO: ghost_leave
+    //# AUDIO: ghost_leave
     -> continue -> swamp
 
 = clarifying_questions
