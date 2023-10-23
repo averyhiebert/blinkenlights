@@ -1,7 +1,7 @@
 
 === start ===
 # CLEAR
-# AUDIOLOOP: silence
+# AUDIOLOOP: lobby
 # BG: plain
 Thank you for your interest in our study.
 <br>

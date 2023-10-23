@@ -27,7 +27,7 @@ func fade_out(duration):
 func fade_to(target_track):
 	if target_track == current_track:
 		return
-	if not (target_track in ["level1","level2","level3","level4","portal_idle","silence","main_menu"]):
+	if not (target_track in ["level1","level2","level3","level4","portal_idle","silence","main_menu","lobby"]):
 		return
 	# Fade to the given music.
 	var old_player = get_node(current_track)
