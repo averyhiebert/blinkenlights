@@ -101,28 +101,55 @@ The ferryman finally relents, and begins leading you to a small boat.
         ~ferryman_summoned = false
         +++ [Wait]
         --- (alone)
-        You are alone, floating in a vast expanse of {&water|oil|tears|ichor|blood|vitreous humor}...
+        You are alone, floating in a vast expanse of {&water|oil|tears|wine|ichor|blood|vitreous humor}...
         +++ [{BLINK}]
             -> alone
         +++ [{timer(10)}]
             -> level3_failure
     ++ [{timer(3)}]
-    -- -> level3_success
+    -- 
+    -> level3_success
 
 = level3_success
+~level_success += L3
 -> enter_portal ->
 THIRD CHAMBER COMPLETE
-(todo will write more here)
-TODO interstitial narrative
--> continue -> fourth_chamber
+-> level3_debrief
 
 = level3_failure
 -> enter_portal ->
-THIRD CHAMBER COMPLETE
-(todo will write more here)
-TODO interstitial narrative
--> continue -> fourth_chamber
+ADVERSE EVENT DETECTED
+THIRD CHAMBER ABORTED
+-> level3_debrief
 
+= level3_debrief
+-> enter_portal ->
+What happened in the third chamber?
++ [I was in a swamp.]
+- (top)
+What {|else} do you remember about the swamp?
+<- swamp_questions(-> top)
+<- debrief_questions(-> top, -> fourth_chamber)
+-> DONE
+
+
+= swamp_questions(-> back)
+* [It was on the shores of an estuary.]
+    Okay.
+    -> back
+* [There was a ghostly ferryman.]
+    Did he take you across the estuary?
+    ** {level_success? L3}[Yes.]
+        Interesting.
+        -> back
+    ** {level_success!? L3}[Sorta.]
+    --
+    What do you mean by that?
+    ** [He disappeared and abandoned me partway across.]
+    --
+    You need to be more careful.
+    -> back
+-> DONE
 
 = vanish
 + [{BLINK}]

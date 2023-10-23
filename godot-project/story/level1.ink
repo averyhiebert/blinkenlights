@@ -127,6 +127,7 @@ There is a prominent lever on the wall, in the {portcullis_raised:up|down} posit
 
 
 = debrief
+~level_success += L1
 -> enter_portal ->
 FIRST CHAMBER COMPLETE
 Tell us, what happened in the first chamber?

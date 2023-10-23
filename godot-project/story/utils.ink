@@ -7,7 +7,7 @@ CONST EYES_OPEN = "EYES_OPEN" // automatically picked if eyes open
 + [{BLINK}] ->->
 
 === continue ===
-+ [Continue...] ->->
++ [Continue...] <> ->->
 
 === function timer(seconds) ===
 // format the "timer" choice text

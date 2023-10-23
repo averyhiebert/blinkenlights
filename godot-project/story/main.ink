@@ -6,18 +6,20 @@ INCLUDE player.ink
 INCLUDE level1.ink
 INCLUDE level2.ink
 INCLUDE level3.ink
-INCLUDE debrief_questions.ink
 INCLUDE level4.ink
+INCLUDE level5.ink
+INCLUDE debrief_questions.ink
 
 
 
 
 
 
-VAR DEBUG = false
+VAR DEBUG = true
 
 {DEBUG:
-    -> third_chamber.swamp
+    ~found_secret = true
+    -> level4_debrief
 }
 
 

@@ -3,6 +3,7 @@ CONST GORGON_DANGER_TIME = 9  // How long does the gorgon stay in view?
 
 LIST gorgon_location = (_cave2), _cave_left, _cave_right, _cave_forest
 VAR gorgon_passed = false
+VAR found_secret = false
 === fourth_chamber ===
 # AUDIO: portal_jump
 # AUDIOLOOP: level4
@@ -146,11 +147,24 @@ You see a crumbling wooden door inset deeply into the cavern wall.
 = secret_room
 You find yourself in a tiny chamber containing a sleeping bag, some canned food, and other items scattered around haphazardly.
 Someone was living here recently, although they seem to have left in a hurry.
-They left behind a notebook.
+You see a scrap of a notebook left behind.
 + [Notebook]
-    TODO Part of finale/ interstitial story
-    WRITE CONTENT FOR NOTEBOOK
-    -> continue -> secret_room
+    ~found_secret = true
+    "To whoever finds this:"
+    -> continue ->
+    "It's too late for me.  I've lived here for too long.  The Gorgon knows my scent."
+    -> continue ->
+    "The previous subjects have all suffered a terrible fate."
+    "But you can escape.  They can let you out of the testing apparatus, if you convince them."
+    -> continue ->
+    "I have discovered that there is a self-destruct code for the apparatus."
+    "Threaten to say it out loud, and they will have to release you."
+    -> continue ->
+    - (illegible)
+    "The code is {ILLEGIBLE|SMUDGED|RIPPED|MISSING}."
+    + [{BLINK}] -> illegible
+    + [This is the end of the message.]
+        -> secret_room
 + [Go back]
     -> cave_key
 
@@ -182,7 +196,8 @@ YOU IMMEDIATELY REGRET THIS
 
 === gorgon_bad_ending
 -> enter_portal ->
-FOURTH CHAMBER COMPLETE
+ADVERSE EVENT DETECTED
+FOURTH CHAMBER ABORTED
 + [{timer(1)}]
 -
 ERROR
@@ -193,7 +208,110 @@ TODO story here.
 === level4_debrief
 -> enter_portal ->
 FOURTH CHAMBER COMPLETE
-TODO interstitial
+Congratulations! You are the first subject to survive the fourth chamber without an adverse event.
++ [Thanks?]
+-
+The fifth chamber awaits.  We are excited to see what lies inside.
++ [Me too.]
+    Excellent. Please blink to begin.
+    -> blink_continue -> fifth_chamber
++ [Wait.  Shouldn't you already know what's in the fifth chamber?]
+-
+...Of course.
+We are excited to see what lies in your future, inside the safe simulated chamber whose contents we created.
++ [That's not what you said.  You said "what lies inside."]
+-
+You are overthinking things.
++ [No I'm not.  I demand to know what's going on here.]
+-
+...
++ [{timer(2)}]
+-
+...Fine.  It won't make any difference.
+I hope you will still see fit to help us.
+-> continue ->
+We did not create the Labyrinth.  It has existed for an unknown length of time.
+It may predate the human species entirely.
+-> continue ->
+When we first discovered it, several of our personnel entered the Labyrinth themselves, in an attempt to understand it.  None of them returned.
+-> continue ->
+So we built this testing apparatus, to send subjects in and pull them out again safely.
+-> continue ->
+Well, "safely."
+-> continue ->
+So far, all of our subjects have suffered from adverse events in the fourth chamber or earlier.
+Many of them now refuse to open their eyes, and experience other mental... anomalies.
+-> continue ->
+But you are different.  You exited the fourth chamber intact.
+Perhaps you can learn the secrets of the Labyrinth?
++ [Perhaps I can...]
+    Then will you agree to enter the fifth chamber for us?
+    ++ [Yes.] -> good_luck_continue
+    ++ [No.]
++ [I'd rather just survive.]
+- (continue_persuading)
+Perhaps you can find our lost employees, or a cure for the other test subjects.
+You would be a hero.
++ [I'd be dead. Or something like it.]
++ [Ok.  I'll do it.] -> good_luck_continue
+-
+You could go down in history as the brave soul who conquered the Labyrinth.
++ [Fine.  I'll do it.] -> good_luck_continue
++ [The answer is still no!]
+-
+I'm afraid you have no choice.
+Only we can release you from the testing apparatus.
+Please blink to continue to the fifth chamber.
++ [{BLINK}] -> fifth_chamber
++ {found_secret}[If you don't release me, I'll say the self-destruct codephrase.]
+-
+...
++ [{timer(2)}]
+-
+...Fine.  You win.
+-> exit_labyrinth
+
+
+= good_luck_continue
+Excellent.  Good luck, we're all counting on you.
+Please blink to begin...
+-> blink_continue -> fifth_chamber
+
+= exit_labyrinth
+Disengaging testing apparatus.
+Please close your eyes for 5 seconds to continue.
++ [{BLINK}]
+-
++ [{UNBLINK}] -> exit_labyrinth
++ [{timer(4.5)}] -> escape_ending
+
+= escape_ending
+# AUDIO: portal_jump
+# AUDIOLOOP: silence
+TODO write escape ending
+Congrats! You escaped with your life.
+
+Chambers successfully cleared: {LIST_COUNT(level_success)}/4.
+{inventory? pocket_watch:You also got a platinum pocket watch, I guess.}
+{player_status? scalded_hand:Your hand is still burned.}
+-> continue ->
+
+Let us know what you thought in the comments, and consider donating using the "support this game" button below!
+-> END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

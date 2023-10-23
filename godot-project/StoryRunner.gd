@@ -83,7 +83,7 @@ func _prompt_choices(choices):
 				choice_timer.connect("timeout",self,"_on_timer")
 				add_child(choice_timer)
 				choice_timer.start()
-			else:
+			elif not (choice.begins_with("DEBUG")):
 				# (note: I adopt the convention that (( )) means a text-mode-only option
 				text_target.append_bbcode("\n[center][url=%d]%s[/url][/center]\n" % [index, choice])
 				#text_target.append_bbcode("[url=%d]%s[/url]\n\n" % [index, choice])

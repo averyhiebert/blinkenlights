@@ -8,7 +8,7 @@
         You will be fine once the experiment is over.
 * [It seems like the environment sometimes changes when I blink.]
     Yes, obviously.  The Labyrinth can be unstable.
-* [Shouldn't you know what's in the simulation?]
+* [Shouldn't you already know what's in the simulation?]
     Of course we know what's in the simulation
     We're asking what you [i]remember[/i] about your experiences.  This is a psychological experiment, remember?
     ** [Ok.]

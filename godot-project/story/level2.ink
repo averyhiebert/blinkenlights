@@ -23,18 +23,23 @@ VAR lights_on = ()
     
 
 === the_bridge ===
-{
-- water_level == sunk:
+{water_level:
+-sunk:
     -> sinking
-- water_level == resolved:
+-resolved:
     -> survived
-} <> // Glue needed for bug
+}
 You are on the bridge of a sinking cargo ship.  Alarms are blaring.
 The only person in sight is the Captain, who is {|still} struggling with some sort of control console.
 <- blink_randomize_lights(->the_bridge)
 + [Talk to the Captain]
-    -> talk_captain -> the_bridge
+    -> talk_captain ->
+    -> the_bridge
 + [To Hallway] -> hallway
++ [DEBUG show light sequence]
+    // For debugging
+    {lights_on}.  
+    -> the_bridge
 
 = hallway
 The hallway is dark and narrow.  The only light source is {~a small porthole|a failing incandescent bulb|the glow of a red warning light}.
@@ -82,10 +87,10 @@ You instinctively close your eyes.
 + [{BLINK}] -> level2_debrief
 
 = survived
+~level_success += L2
 Deep within the ship, you hear dozens of pumps roar into operation.
 "Finally!"
 The Captain breathes a sigh of releaf as the ship slowly begins to right itself.
-TODO Better transition
 -> continue -> level2_debrief
 
 
@@ -97,6 +102,7 @@ TODO Better transition
 }
 
 = first_conversation
+TODO what if you already went to the engine room?
 "Hey, you! I need your help."
 - (captain_ask)
 * [What do you need me to do?]
@@ -185,9 +191,37 @@ The captain enters {listWithCommas(selection,"")} on the command console...
 
 === level2_debrief
 -> enter_portal ->
-SECOND CHAMBER COMPLETE
-(todo will write more here)
-TODO Write debrief conversation.
--> continue -> third_chamber
+{level_success? L2:
+    SECOND CHAMBER COMPLETE
+- else:
+    ADVERSE EVENT DETECTED
+    SECOND CHAMBER ABORTED
+}
+Tell us, what happened in the second chamber?
++ [I was on a sinking ship.]
+- (top)
+What {|else} do you remember about this ship?
+<- ship_questions(-> top)
+<- debrief_questions(-> top, -> third_chamber)
+-> DONE
+
+= ship_questions(-> back)
+* {level_success? L2}[I helped the Captain rescue the ship.]
+    Interesting.
+    -> back
+* {level_success !? L2}[The ship sank.]
+    Was it your fault?
+    ** [Yes.]
+    ** [No.]
+    ** [Maybe?]
+    --
+    Did you drown?
+    ** [Yes.]
+    ** [No.]
+    ** [Maybe?]
+    --
+    Interesting.
+    -> continue -> back
+-> DONE
 
 
