@@ -3,7 +3,10 @@ extends CanvasLayer
 var scene_dict = {
 	"rain": preload("res://backgrounds/rain.tscn"),
 	"vortex": preload("res://backgrounds/vortex.tscn"),
-	"leaves": preload("res://backgrounds/leaves.tscn")
+	"leaves": preload("res://backgrounds/leaves.tscn"),
+	"plain": preload("res://backgrounds/plain.tscn"),
+	"dark": preload("res://backgrounds/dark.tscn"),
+	"cave": preload("res://backgrounds/cave.tscn")
 }
 
 # Called when the node enters the scene tree for the first time.

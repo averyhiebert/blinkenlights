@@ -10,6 +10,8 @@ var unblink_index = -1 # Which index is the "unblink" option?
 var timer_index = -1
 var choice_timer = null;
 
+var reset_lockout = false
+
 func _ready():
 	text_target.clear()
 	text_target.connect("meta_clicked", self, "_select_choice")
@@ -37,8 +39,11 @@ func _story_loaded():
 	# Continue story
 	_ink_player.continue_story()
 
-
 func _continued(text, tags):
+	if reset_lockout:
+		# workaround unclear bug
+		return
+	
 	if "CLEAR" in tags:
 		# Clear before next line.
 		text_target.clear()
@@ -54,17 +59,34 @@ func _continued(text, tags):
 			$music.fade_to(track_name)
 		elif tag == "INTERRUPT_MONSTER":
 			$SFX/monster.stop()
+		elif tag == "RESTART":
+			#reset_lockout = true
+			#_ink_player.destroy()
+			_ink_player.reset()
+			#var timer = Timer.new()
+			#timer.one_shot = true
+			#timer.wait_time = 1
+			#timer.connect("timeout",self,"restart_story")
+			#add_child(choice_timer)
+			#timer.start()
 	
 	text_target.append_bbcode(text)
 	
 	_ink_player.continue_story()
 
+func restart_story():
+	reset_lockout = false
+	_ink_player.continue_story()
 
 # ############################################################################ #
 # Private Methods
 # ############################################################################ #
 
 func _prompt_choices(choices):
+	if reset_lockout:
+		# workaround unclear bug
+		return
+	
 	if !choices.empty():
 		var index = 0
 		for choice in choices:

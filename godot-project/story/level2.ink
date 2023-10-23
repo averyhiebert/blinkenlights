@@ -2,6 +2,7 @@ LIST water_level = (very_low), low, medium, high, sunk, resolved
 === second_chamber ===
 # AUDIO: portal_jump
 # AUDIOLOOP: level2
+# BG: rain
 ~randomize_lights()
 -> the_bridge
 

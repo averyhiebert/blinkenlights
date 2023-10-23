@@ -2,6 +2,7 @@
 === third_chamber ===
 # AUDIO: portal_jump
 # AUDIOLOOP: level3
+# BG: plain
 VAR ferryman_summoned = false
 -> swamp
 
@@ -104,7 +105,7 @@ The ferryman finally relents, and begins leading you to a small boat.
         You are alone, floating in a vast expanse of {&water|oil|tears|wine|ichor|blood|vitreous humor}...
         +++ [{BLINK}]
             -> alone
-        +++ [{timer(5)}]
+        +++ [{timer(2.5)}]
             -> level3_failure
     ++ [{timer(3)}]
     -- 
@@ -168,3 +169,5 @@ What {|else} do you remember about the swamp?
     <- vanish
     ++ [I see...]
     -- (finished_clarification) -> ferryman_root
+
+

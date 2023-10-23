@@ -2,7 +2,7 @@
 === start ===
 # CLEAR
 # AUDIOLOOP: silence
-# BG: rain
+# BG: plain
 Thank you for your interest in our study.
 We will be observing your behaviour within a series of perfectly safe, digitally-simulated environments which we call The Labyrinth.
 -> continue ->
@@ -11,7 +11,7 @@ Do you consent to participate in this experiment?
  * [I will participate.]
     Excellent.
  * [I will not participate.]
-    There has been a misunderstanding. You [i]will[/i] participate.
+    There has been a misunderstanding. You WILL participate.
     We are merely asking for your consent, as required for ethics board approval.
     ** [I consent.]
         Excellent.
@@ -58,12 +58,12 @@ Please close your eyes for 5 seconds.
     ++ [{timer(4.5)}]
         -> sync_done
 - (sync_done)
-TODO Major background change/some sort of swirly vortex shader thing.
--> enter_portal ->
+#BG: vortex
 SYNC COMPLETE
 + [{UNBLINK}]
 -
 # AUDIOLOOP: portal_idle
+# AUDIO: portal_jump
 SYNC COMPLETE
 + [Enter the labyrinth...]
     -> first_chamber

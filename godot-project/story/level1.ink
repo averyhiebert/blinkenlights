@@ -2,6 +2,7 @@
 === first_chamber ===
 # AUDIO: portal_jump
 # AUDIOLOOP: level1
+# BG: leaves
 -> garden
 
 VAR path_NS = true

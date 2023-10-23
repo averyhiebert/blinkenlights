@@ -10,7 +10,7 @@
     Yes, obviously.  The Labyrinth can be unstable.
 * [Shouldn't you already know what's in the simulation?]
     Of course we know what's in the simulation
-    We're asking what you [i]remember[/i] about your experiences.  This is a psychological experiment, remember?
+    We're asking what you remember about your experiences.  This is a psychological experiment, remember?
     ** [Ok.]
 + [I think that's everything.]
     Very well.  Let's continue.

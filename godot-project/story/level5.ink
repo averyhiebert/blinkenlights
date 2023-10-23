@@ -1,5 +1,6 @@
 === fifth_chamber ===
 # AUDIOLOOP: silence
+# BG: dark
 -> top
 = top
 You at one end of a hallway in what appears to be an abandoned art gallery.
@@ -24,6 +25,7 @@ You at one end of a hallway in what appears to be an abandoned art gallery.
 * -> 
     TODO Specific jumpscare image.
     # CLEAR
+    # AUDIO: horrid_sight
     -> death("FIFTH")
 -
 ->->
@@ -35,6 +37,9 @@ ADVERSE EVENT DETECTED
 + [{BLINK}]
 + [{timer(1)}]
 -
+# BG: dark
+# AUDIOLOOP: silence
+# AUDIO: horrid_sight
 ERROR
 UNSTABLE EVENT
 RE-ENTERING CHAMBER
@@ -49,9 +54,16 @@ KERNEL PANIC
 + [{timer(1)}]
 -
 # AUDIOLOOP: silence
-TODO dark background
+# BG: dark
+# AUDIO: horrid_sight
 You are violently thrust back into the real world, traumatized by whatever it is you just saw.
 You resolve never to open your eyes again.
 + [{BLINK}]
 -
-TODO Darkness, or a restart button.
++ [{timer(5)}]
+-
++ [...try again?]
+    # RESTART
+    Restarting...
+    -> DONE
+

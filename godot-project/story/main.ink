@@ -15,10 +15,11 @@ INCLUDE debrief_questions.ink
 
 
 
-VAR DEBUG = false
+VAR DEBUG = true
 
 {DEBUG:
     ~found_secret = true
+    -> fourth_chamber
     -> cave_entrance.cave1
     -> level4_debrief
 }

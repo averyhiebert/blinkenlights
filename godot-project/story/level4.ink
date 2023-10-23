@@ -7,6 +7,7 @@ VAR found_secret = false
 === fourth_chamber ===
 # AUDIO: portal_jump
 # AUDIOLOOP: level4
+# BG: cave
 ~gorgon_location = LIST_RANDOM(LIST_ALL(gorgon_location))
 -> cave_entrance
 
@@ -179,7 +180,7 @@ You hear the gorgon approaching!!!!! # AUDIO: monster
 -
 TODO Scary visual effect
 THE GORGON IS A TERRIBLE SITE TO BEHOLD
-YOU IMMEDIATELY REGRET THIS
+YOU IMMEDIATELY REGRET OPENING YOUR EYES
 + [{timer(GORGON_DANGER_TIME)}]
     //~gorgon_passed = true
     ~random_switch(gorgon_location)
@@ -191,7 +192,7 @@ YOU IMMEDIATELY REGRET THIS
 # INTERRUPT_MONSTER
 # AUDIO: horrid_sight
 THE GORGON IS A TERRIBLE SITE TO BEHOLD
-YOU IMMEDIATELY REGRET THIS
+YOU IMMEDIATELY REGRET OPENING YOUR EYES
 -> blink_continue -> death("FOURTH")
 
 
