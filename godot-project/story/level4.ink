@@ -275,7 +275,9 @@ Please blink to continue to the fifth chamber.
 = good_luck_continue
 Excellent.  Good luck, we're all counting on you.
 Please blink to begin...
--> blink_continue -> fifth_chamber
+-> blink_continue ->
+# AUDIO: portal_jump
+-> fifth_chamber
 
 = exit_labyrinth
 Disengaging testing apparatus.
@@ -291,10 +293,9 @@ Please close your eyes for 5 seconds to continue.
 TODO write escape ending
 Congrats! You escaped with your life.
 
-Chambers successfully cleared: {LIST_COUNT(level_success)}/4.
+Chambers cleared without adverse events: {LIST_COUNT(level_success)}/4.
 {inventory? pocket_watch:You also got a platinum pocket watch, I guess.}
 {player_status? scalded_hand:Your hand is still burned.}
--> continue ->
 
 Let us know what you thought in the comments, and consider donating using the "support this game" button below!
 -> END
