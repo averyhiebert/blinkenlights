@@ -53,6 +53,9 @@ But I will not take you across the estuary."
         +++ [Yes.]
             "Prove it."
             The ferryman's hollow eyes stare deeply into your own.
+            <br>
+            <br>
+            [center][img]icon.png[/img]  [img]icon.png[/img][/center]
             TODO If we can show player's eyes somewhere, it should be here.
             ++++ [{BLINK}]
                 The ferryman suddenly fades out of existence.

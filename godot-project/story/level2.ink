@@ -80,11 +80,11 @@ You instinctively close your eyes.
     Cold water covers your head and the mammalian dive reflex kicks in.
     You instinctively close your eyes.
     PLEASE INSTINCTIVELY CLOSE YOUR EYES.
-    + [{BLINK}]
-    -
-    + [{timer(1)}]
-    + [{UNBLINK}]
-    - -> level2_debrief
+    ++ [{BLINK}]
+    --
+    ++ [{timer(1)}]
+    ++ [{UNBLINK}]
+    -- -> level2_debrief
 + [{BLINK}] -> level2_debrief
 
 = survived
@@ -134,6 +134,7 @@ TODO what if you already went to the engine room?
 = waiting_for_answer
 {water_level == very_low:
     "You're back.  Did you check which lights are on in the engine room?"
+    <- blink_randomize_lights(->waiting_for_answer)
     + [No.]
         "Then quit wasting my time and go do it already!"
         -> continue ->->

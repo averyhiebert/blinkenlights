@@ -195,6 +195,7 @@ YOU IMMEDIATELY REGRET OPENING YOUR EYES
 
 
 === level4_debrief
+~level_success += L4
 -> enter_portal ->
 FOURTH CHAMBER COMPLETE
 Congratulations! You are the first subject to survive the fourth chamber without an adverse event.
@@ -281,11 +282,11 @@ Please close your eyes for 5 seconds to continue.
 # AUDIOLOOP: silence
 You find yourself ejected back into reality.
 Congrats! You escaped with your life.
-
+<br>
 Chambers cleared without adverse events: {LIST_COUNT(level_success)}/4.
 {player_status? scalded_hand:Your hand is still burned.}
 {inventory? pocket_watch:You also got a platinum pocket watch, I guess.}
-
+<br>
 Let us know what you thought in the comments, and consider donating using the "support this game" button below!
 -> END
 
