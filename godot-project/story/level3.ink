@@ -104,7 +104,7 @@ The ferryman finally relents, and begins leading you to a small boat.
         You are alone, floating in a vast expanse of {&water|oil|tears|wine|ichor|blood|vitreous humor}...
         +++ [{BLINK}]
             -> alone
-        +++ [{timer(10)}]
+        +++ [{timer(5)}]
             -> level3_failure
     ++ [{timer(3)}]
     -- 

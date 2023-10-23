@@ -23,6 +23,7 @@ You at one end of a hallway in what appears to be an abandoned art gallery.
     The featureless face of the statue stares directly into your eyes, mere inches from your face.
 * -> 
     TODO Specific jumpscare image.
+    # CLEAR
     -> death("FIFTH")
 -
 ->->

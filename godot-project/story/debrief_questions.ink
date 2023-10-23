@@ -1,7 +1,7 @@
 // questions that can be asked after any debrief
 
 === debrief_questions(-> go_back, -> next_level) ===
-* {player_status? scalded_hand}[I think I burned my hand at some point.]
+* {player_status? scalded_hand}{not second_chamber}[I think I burned my hand at some point.]
     Don't worry, the simulation is perfectly safe.
     ** [But it hurts.]
         The simulation must be realistic for the sake of experimental validity.
