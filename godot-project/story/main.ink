@@ -17,7 +17,7 @@ INCLUDE menu.ink
 
 
 
-VAR DEBUG = false
+VAR DEBUG = true
 
 {DEBUG:
     ~found_secret = true

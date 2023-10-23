@@ -1,6 +1,6 @@
 === main_menu
 - (top)
-# AUDIOLOOP: main_menu
+# AUDIOLOOP: silence
 # BG: plain
 [center][color=\#d53c6a]LID ASTRAY[/color][/center]
 [center][color=\#d53c6a]~~~~~~~~~~[/color][/center]

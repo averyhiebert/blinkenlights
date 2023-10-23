@@ -96,7 +96,8 @@ You find yourself at a dead end.
 {inventory !? iron_key:There is a large iron key lying on the floor.}
 You also see an inscription scratched into one of the cave walls.
 + [{BLINK}]
-    -> cave_key_closed
+    //-> cave_key_closed  // for time-delayed version (harder)
+    -> cave_key_closed_long
 + [Read the inscription]
     "EYES = LIES!
     Close your eyes to open your mind!"
@@ -109,6 +110,7 @@ You also see an inscription scratched into one of the cave walls.
 + [Go back]
     -> cave_right
 
+// Note: not currently used
 = cave_key_closed
 You find yourself at a dead end.
 {inventory !? iron_key:There is a large iron key lying on the floor.}
@@ -134,7 +136,6 @@ TODO Make it require at least a second before secret passage shows up.
 You find yourself at a dead end.
 {inventory !? iron_key:There is a large iron key lying on the floor.}
 You also see an inscription scratched into one of the cave walls.
-TODO Make it require at least a second before secret passage shows up.
 + [Secret Passage]
     -> secret_room
 + [{UNBLINK}]
@@ -263,17 +264,18 @@ Perhaps you can learn the secrets of the Labyrinth?
 - (continue_persuading)
 Perhaps you can find our lost employees, or a cure for the other test subjects.
 You would be a hero.
-+ [I'd be dead. Or something like it.]
 + [Ok.  I'll do it.] -> good_luck_continue
++ [The answer is still no.]
 -
 You could go down in history as the brave soul who conquered the Labyrinth.
 + [Fine.  I'll do it.] -> good_luck_continue
-+ [The answer is still no!]
++ [For the last time, no!]
 -
 I'm afraid you have no choice.
 Only we can release you from the testing apparatus.
 Please blink to continue to the fifth chamber.
 + [{BLINK}] -> fifth_chamber
++ [{timer(30)}] -> persistent
 + {found_secret}[If you don't release me, I'll say the self-destruct codephrase.]
 -
 ...
@@ -282,6 +284,10 @@ Please blink to continue to the fifth chamber.
 ...Fine.  You win.
 -> exit_labyrinth
 
+= persistent
+Wow, you're very persistent.
+Fine. Have it your way.
+-> continue -> exit_labyrinth
 
 = good_luck_continue
 Excellent.  Good luck, we're all counting on you.
@@ -291,16 +297,17 @@ Please blink to begin...
 -> fifth_chamber
 
 = exit_labyrinth
-Disengaging testing apparatus.
-Please close your eyes for 5 seconds to continue.
+DISENGAGING TESTING APPARATUS
+Please close your eyes for 3 seconds to continue.
 + [{BLINK}]
 -
 + [{UNBLINK}] -> exit_labyrinth
-+ [{timer(4.5)}] -> escape_ending
++ [{timer(2.5)}] -> escape_ending
 
 = escape_ending
 # AUDIO: portal_jump
 # AUDIOLOOP: silence
+# BG: plain
 You find yourself ejected back into reality.
 Congrats! You escaped with your life.
 <br>
