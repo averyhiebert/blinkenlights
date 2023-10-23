@@ -1,7 +1,7 @@
 CONST GORGON_WARNING_TIME = 3 // How much warning before eyes MUST be closed?
 CONST GORGON_DANGER_TIME = 9  // How long does the gorgon stay in view?
 
-LIST gorgon_location = (_cave2), _cave_left, _cave_right, _cave_forest
+LIST gorgon_location = _cave2, (_cave_left), _cave_right, _cave_forest
 VAR gorgon_passed = false
 VAR found_secret = false
 === fourth_chamber ===
@@ -160,7 +160,7 @@ You see a scrap of a notebook left behind.
     "I have discovered that there is a self-destruct codephrase for the apparatus."
     "Threaten to say it out loud, and they will have to release you."
     -> continue ->
-    - (illegible)
+    -- (illegible)
     "The codephrase is {~ILLEGIBLE|SMUDGED|RIPPED|MISSING}."
     ++ [{BLINK}] -> illegible
     ++ [This is the end of the message.]
@@ -232,7 +232,7 @@ Well, "safely."
 So far, all of our subjects have suffered from adverse events in the fourth chamber or earlier.
 Many of them now refuse to open their eyes, and experience other mental... anomalies.
 -> continue ->
-But you are different.  You exited the fourth chamber intact.
+But you are different.  You escaped the fourth chamber intact.
 Perhaps you can learn the secrets of the Labyrinth?
 + [Perhaps I can...]
     Then will you agree to enter the fifth chamber for us?

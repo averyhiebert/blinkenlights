@@ -90,7 +90,7 @@ You instinctively close your eyes.
 ~level_success += L2
 Deep within the ship, you hear dozens of pumps roar into operation.
 "Finally!"
-The Captain breathes a sigh of releaf as the ship slowly begins to right itself.
+The Captain breathes a sigh of relief as the ship slowly begins to right itself.
 -> continue -> level2_debrief
 
 

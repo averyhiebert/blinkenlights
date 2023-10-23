@@ -19,6 +19,7 @@ VAR DEBUG = false
 
 {DEBUG:
     ~found_secret = true
+    -> cave_entrance.cave1
     -> level4_debrief
 }
 
