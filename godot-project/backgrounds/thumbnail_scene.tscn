@@ -18,9 +18,9 @@ gravity = Vector3( 0, 50, 0 )
 angular_velocity = 10.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale = 10.0
+scale = 20.0
 scale_curve = SubResource( 3 )
-color = Color( 0.27451, 0.054902, 0.168627, 1 )
+color = Color( 0.486275, 0.0941176, 0.235294, 1 )
 
 [node name="Node2D" type="Node2D"]
 

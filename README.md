@@ -1,19 +1,3 @@
-# Untitled Blinking Game
-When you blink in the game, you blink in real life?
+# Lid Astray
 
-## Possibly useful links?
-
-## Palette used:
-https://lospec.com/palette-list/midnight-ablaze
-
-# ROADMAP:
- - main menu: 
-    - with credits/attributions
- - itch.io page
-    - thumbnail
-    - description
-
-# Nice-to-have
- - "SCARY OVERLAY" / sillhoette image
- - Possible story bug fixes/improvements
-    - make level 2 and 3 slightly harder
+Code for a text-based adventure game where the text/world changes when you blink.  Play it [here](https://averyhiebert.itch.io/lid-astray). Made in 72 hours by Avery Hiebert and Ryan Samman for the inkJam 2023.  Tools used include Google MediaPipe, Godot, and [Ink](https://www.inklestudios.com/ink/).
