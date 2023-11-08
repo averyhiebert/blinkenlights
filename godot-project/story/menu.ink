@@ -1,3 +1,8 @@
+// Store some user settings.
+VAR BG_ANIMATION = true
+
+
+
 === main_menu
 - (top)
 # AUDIOLOOP: silence
@@ -13,7 +18,15 @@
     <br>
     This is not within the 3 - 55 HZ range that some online guidelines say to avoid, but I figured I should let you know, just in case.
     ++ [Main Menu] -> main_menu
++ [Settings] -> settings
 + [Credits] -> credits
+
+=== settings ===
+[center]Settings[/center]
++ [Reduced Background Motion: {BG_ANIMATION:OFF|ON}]
+    ~BG_ANIMATION = not BG_ANIMATION
+    -> settings
++ [Main Menu] -> main_menu
 
 === credits ==
 A game by Avery Hiebert and Ruan Samman

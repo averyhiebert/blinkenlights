@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://backgrounds/pausable_particles.gd" type="Script" id=1]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -28,3 +30,4 @@ amount = 200
 lifetime = 0.8
 preprocess = 2.0
 process_material = SubResource( 1 )
+script = ExtResource( 1 )

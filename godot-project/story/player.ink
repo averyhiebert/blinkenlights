@@ -6,3 +6,4 @@ LIST level_success = L1, L2, L3, L4
 
 VAR inventory = ()
 VAR player_status = ()
+
